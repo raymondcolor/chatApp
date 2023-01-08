@@ -1,38 +1,120 @@
-.App {
-  text-align: center;
+/* importing google font to be used in the project */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* removing the default margins and paddings on all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* setting css variable for colors, font ,sizes  */
+:root {
+  --primaryClor: #2B625B;
+  --secondaryColor: #C4D293;
+  --textColor: rgb(106, 106, 106);
+  --font: 'Roboto', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* setting default font for the project */
+body {
+  font-family: var(--font);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* register and login page styles */
+.login {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+.loginLeft {
+  flex: 50vw;
+}
+
+.loginLeft img {
+  width: 100%;
+  height: 100vh;
+}
+
+.loginRight {
+  flex: 50vw;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.formDiv {
+  width: 60%;
+}
+
+.formHeading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formHeading h1 {
+  color: var(--primaryClor);
+  font-size: 35px;
+  font-weight: 900;
+}
+
+.formHeading h1 span {
+  color: var(--secondaryColor);
+}
+
+.formHeading h2 {
+  color: var(--textColor);
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.loginRight input {
+  width: 100%;
+  outline: none;
+  height: 40px;
+  padding-left: 15px;
+  border-radius: 6px;
+  border: 1px solid rgb(106, 106, 106);
+  font-family: var(--font);
+  font-size: 15px;
+  color: var(--textColor);
+}
+
+.loginRight input:focus {
+  border: 2px solid rgb(106, 106, 106);
+}
+
+.formDiv label {
+  display: block;
+  text-align: center;
+  width: 100%;
+  background-color: var(--secondaryColor);
+  padding: 20px 0;
+  border-radius: 8px;
+  color: rgb(39, 39, 39);
+}
+
+.loginRight button {
+  height: 40px;
+  width: 100px;
+  border: none;
+  background-color: var(--primaryClor);
   color: white;
+  width: 100%;
+  border-radius: 6px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.formDiv p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
 }
