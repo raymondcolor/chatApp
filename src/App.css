@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font);
 }
 
 /* setting css variable for colors, font ,sizes  */
@@ -16,10 +17,6 @@
   --font: 'Roboto', sans-serif;
 }
 
-/* setting default font for the project */
-body {
-  font-family: var(--font);
-}
 
 /* register and login page styles */
 .login {
