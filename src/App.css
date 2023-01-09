@@ -115,3 +115,58 @@ form {
   margin-top: 20px;
   font-size: 15px;
 }
+
+.drawer {
+  /* background-color: var(--primaryClor);  */
+  height: 100%;
+}
+
+.drawerNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 250px;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--primaryClor);
+}
+
+.logo h1 span {
+  color: var(--secondaryColor);
+}
+
+.profileNav {
+  background-color: var(--primaryClor);
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profileNav img {
+  height: 45px;
+  width: 45px;
+}
+
+.searchBar {
+  width: 250px;
+}
+
+.searchBar input {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--textColor);
+  height: 40px;
+  padding-left: 15px;
+  color: var(--textColor);
+  font-size: 15px;
+}
+
+.mainNav {
+  background-color: var(--primaryClor);
+}
