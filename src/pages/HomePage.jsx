@@ -1,14 +1,15 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+// import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
+// import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import IconButton from '@mui/material/IconButton';
+// import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import DrawerNav from '../components/DrawerNav';
 import SearchBar from '../components/SearchBar';
+import Chats from '../components/Chats';
+import Chat from '../components/Chat';
 
 const drawerWidth = 300;
 
@@ -22,15 +23,28 @@ function HomePage(props) {
 
   const drawer = (
     <div className='drawer'>
-      <Toolbar>
-        <DrawerNav />
-      </Toolbar>
+      <div className='fixedNavSection'>
+        <Toolbar>
+          <DrawerNav />
+        </Toolbar>
 
-      <Toolbar>
-        <SearchBar />
-      </Toolbar>
-
-      <Divider />
+        <Toolbar>
+          <SearchBar />
+        </Toolbar>
+      </div>
+      <div className='chatListDvi'>
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+        <Chats />
+      </div>
     </div>
   );
 
@@ -39,8 +53,7 @@ function HomePage(props) {
 
   return (
     <Box sx={{display: 'flex'}}>
-      <CssBaseline />
-      <AppBar
+      {/* <AppBar
         position='fixed'
         sx={{
           width: {sm: `calc(100% - ${drawerWidth}px)`},
@@ -56,7 +69,7 @@ function HomePage(props) {
             <MenuIcon />
           </IconButton>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <Box
         component='nav'
         sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}
@@ -88,9 +101,9 @@ function HomePage(props) {
       </Box>
       <Box
         component='main'
-        sx={{flexGrow: 1, p: 3, width: {sm: `calc(100% - ${drawerWidth}px)`}}}>
-        <Toolbar />
+        sx={{flexGrow: 1, width: {sm: `calc(100% - ${drawerWidth}px)`}}}>
         {/* messages here */}
+        <Chat />
       </Box>
     </Box>
   );
