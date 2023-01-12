@@ -1,6 +1,26 @@
 /* importing google font to be used in the project */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
+.ChatMessages,
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(185, 185, 185) #e1e1e1;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgb(185, 185, 185);
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #e1e1e1;
+}
+
 /* removing the default margins and paddings on all elements */
 * {
   margin: 0;
@@ -122,6 +142,7 @@ form {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background-color: var(--primaryClor);
 }
 
 .drawerNav {
@@ -135,7 +156,7 @@ form {
 .logo h1 {
   font-size: 20px;
   font-weight: 900;
-  color: var(--primaryClor);
+  color: white;
 }
 
 .logo h1 span {
@@ -143,15 +164,15 @@ form {
 }
 
 .profileNav {
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   overflow: hidden;
 }
 
 .profileNav img {
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
 }
 
 /* search bar styling */
@@ -165,8 +186,15 @@ form {
   border: none;
   outline: none;
   height: 40px;
-  color: var(--textColor);
+  color: rgb(217, 217, 217);
   font-size: 15px;
+  background-color: #416d67;
+  padding-left: 15px;
+  border-radius: 15px;
+}
+
+.searchBar input::placeholder {
+  color: rgb(217, 217, 217);
 }
 
 /* styles for chat in the side  bar */
@@ -202,7 +230,7 @@ form {
 }
 
 .chat:hover {
-  background-color: rgb(227, 227, 227);
+  background-color: #416d67;
 }
 
 .chatAvator {
@@ -222,16 +250,20 @@ form {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
 }
 
 .chatDetails h3 {
-  color: var(--textColor);
+  color: rgb(217, 217, 217);
   font-size: 14px;
+  font-weight: 600;
+  margin: 6px 0 4px 0;
 }
 
 .chatDetails p {
-  color: var(--textColor);
+  color: rgb(217, 217, 217);
   font-size: 12px;
+  font-weight: 300;
 
 }
 
@@ -244,7 +276,7 @@ form {
 
 .ChatNav {
   flex: 10vh;
-  background-color: var(--primaryClor);
+  background-color: var(--secondaryColor);
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -258,7 +290,28 @@ form {
 .ChatMessages {
   flex: 80vh;
   padding: 20px 20px;
-  background-color: #fcffef;
+  background-color: #fdfff5;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.ChatMessages {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(185, 185, 185) #e1e1e1;
+}
+
+.ChatMessages::-webkit-scrollbar {
+  width: 8px;
+
+}
+
+.ChatMessages::-webkit-scrollbar-thumb {
+  background-color: rgb(185, 185, 185);
+  border-radius: 10px;
+}
+
+.ChatMessages::-webkit-scrollbar-track {
+  background-color: #e1e1e1;
 }
 
 .ChatInput {
@@ -266,6 +319,25 @@ form {
   background-color: white;
   padding: 0 20px;
 
+}
+
+.messageRecived {
+  display: flex;
+  flex-direction: column;
+}
+
+.messageText {
+  background-color: rgb(215, 215, 215);
+  padding: 10px;
+  width: fit-content;
+  border-radius: 15px 15px 0 15px;
+  max-width: 350px;
+}
+
+.messageImage img{
+  background-color: rgb(215, 215, 215);
+  margin: 10px 0;
+  max-width: 300px;
 }
 
 .typingInput {
