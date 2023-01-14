@@ -106,6 +106,18 @@ form {
   color: var(--textColor);
 }
 
+/*styles for div that contains the password input and  visibility icon */
+.pswdDiv{
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.icon{
+position: absolute;
+right: 20px;
+color: rgb(124, 124, 124);
+}
+
 .loginRight input:focus {
   border: 2px solid rgb(106, 106, 106);
 }
@@ -268,6 +280,7 @@ form {
 }
 
 /* styling the navbar that is in the main container */
+
 .chatSection {
   display: flex;
   flex-direction: column;
@@ -280,13 +293,15 @@ form {
   padding: 0 20px;
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .ChatNav span {
   font-weight: 700;
-  color: white;
+  color: rgb(91, 91, 91);
 }
 
+/* styles for the visible part/container  for messaging */
 .ChatMessages {
   flex: 80vh;
   padding: 20px 20px;
@@ -320,26 +335,46 @@ form {
   padding: 0 20px;
 
 }
+/* styles to the messages recieved */
 
-.messageRecived {
-  display: flex;
-  flex-direction: column;
-}
-
-.messageText {
+.messageRecived p {
   background-color: rgb(215, 215, 215);
   padding: 10px;
   width: fit-content;
   border-radius: 15px 15px 0 15px;
-  max-width: 350px;
+  max-width: 50%;
 }
 
-.messageImage img{
+.messageRecived img {
   background-color: rgb(215, 215, 215);
   margin: 10px 0;
   max-width: 300px;
 }
 
+/* ower class sets styles for the messages a sender sends */
+.owner .align{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.owner p {
+  background-color: var(--primaryClor);
+  color: #fdfff5;
+  padding: 10px;
+  width: fit-content;
+  border-radius: 15px 15px 15px 0px;
+  max-width: 50%;
+}
+
+.owner img {
+  background-color: rgb(215, 215, 215);
+  margin: 10px 0;
+  max-width: 300px;
+}
+
+
+/* input styles, these apply to the bottom iput where a user types a message */
 .typingInput {
   display: flex;
   align-items: center;

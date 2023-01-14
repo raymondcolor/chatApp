@@ -1,8 +1,21 @@
-import React from 'react';
+import React,{useState} from 'react';
 import LoginImage from '../images/1.jpg';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import {Visibility, VisibilityOff} from '@mui/icons-material';
 
 const Register = () => {
+  const [type, setType] = useState('password');
+  const [show, setShow] = useState(<VisibilityOff />);
+
+  const changeInput = () => {
+    if (type === 'password') {
+      setType('text');
+      setShow(<Visibility />);
+    } else {
+      setType('password');
+      setShow(<VisibilityOff />);
+    }
+  };
   return (
     <div>
       <div className='login'>
@@ -27,7 +40,10 @@ const Register = () => {
               <input style={{display: 'none'}} type='file' id='file' />
               <label htmlFor='file'>Upload photo</label>
 
-              <input type='password' placeholder='Password' />
+              <div className='pswdDiv'>
+                <input type={type} placeholder='Password' />
+                <div className='icon' onClick={changeInput}>{show}</div>
+              </div>
 
               <button>Create account</button>
             </form>
