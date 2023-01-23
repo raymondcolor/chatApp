@@ -1,6 +1,6 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import LoginImage from '../images/1.jpg';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 
 const Register = () => {
@@ -16,6 +16,7 @@ const Register = () => {
       setShow(<VisibilityOff />);
     }
   };
+
   return (
     <div>
       <div className='login'>
@@ -42,7 +43,9 @@ const Register = () => {
 
               <div className='pswdDiv'>
                 <input type={type} placeholder='Password' />
-                <div className='icon' onClick={changeInput}>{show}</div>
+                <div className='icon' onClick={changeInput}>
+                  {show}
+                </div>
               </div>
 
               <button>Create account</button>
