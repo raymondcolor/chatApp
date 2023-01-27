@@ -35,7 +35,7 @@ html::-webkit-scrollbar-track {
   --secondaryColor: #C4D293;
   --textColor: rgb(106, 106, 106);
   --font: 'Roboto', sans-serif;
-  --DarkPrimary:#182C25;
+  --DarkPrimary: #0d312c;
 }
 
 
@@ -157,6 +157,16 @@ form {
   display: flex;
   flex-direction: column;
   background-color: var(--primaryClor);
+  margin: 0 !important;
+}
+
+#dark .drawer {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--DarkPrimary);
+  margin: 0 !important;
 }
 
 .drawerNav {
@@ -207,6 +217,18 @@ form {
   border-radius: 15px;
 }
 
+#dark .searchBar input {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 40px;
+  color: rgb(217, 217, 217);
+  font-size: 15px;
+  background-color: #17443e;
+  padding-left: 15px;
+  border-radius: 15px;
+}
+
 .searchBar input::placeholder {
   color: rgb(217, 217, 217);
 }
@@ -220,6 +242,15 @@ form {
   scrollbar-color: rgb(185, 185, 185) #e1e1e1;
 }
 
+#dark .chatListDvi {
+  overflow: scroll;
+  flex-direction: 3;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--DarkPrimary) #17443e;
+}
+
+
 /* styling the scroll bar for the chat div.  */
 .chatListDvi::-webkit-scrollbar {
   width: 5px;
@@ -230,8 +261,17 @@ form {
   border-radius: 10px;
 }
 
+#dark .chatListDvi::-webkit-scrollbar-thumb {
+  background-color: #17443e;
+  border-radius: 10px;
+}
+
 .chatListDvi::-webkit-scrollbar-track {
   background-color: #e1e1e1;
+}
+
+#dark .chatListDvi::-webkit-scrollbar-track {
+  background-color: var(--DarkPrimary);
 }
 
 /* style for individual chat container */
@@ -300,7 +340,7 @@ form {
 
 #dark .ChatNav {
   flex: 10vh;
-  background-color: var(--DarkPrimary);
+  background-color: #17443e;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -318,6 +358,7 @@ form {
   font-weight: 700;
   color: rgb(91, 91, 91);
 }
+
 #dark .ChatNav span {
   font-weight: 700;
   color: #fff;
@@ -343,6 +384,7 @@ form {
   overflow: scroll;
   overflow-x: hidden;
 }
+
 #dark .ChatMessages {
   flex: 80vh;
   padding: 20px 20px;
@@ -356,6 +398,11 @@ form {
   scrollbar-color: rgb(185, 185, 185) #e1e1e1;
 }
 
+#dark .ChatMessages {
+  scrollbar-width: thin;
+  scrollbar-color: var(--DarkPrimary) #17443e;
+}
+
 .ChatMessages::-webkit-scrollbar {
   width: 8px;
 
@@ -366,13 +413,29 @@ form {
   border-radius: 10px;
 }
 
+#dark .ChatMessages::-webkit-scrollbar-thumb {
+  background-color: #17443e;
+  border-radius: 10px;
+}
+
 .ChatMessages::-webkit-scrollbar-track {
   background-color: #e1e1e1;
+}
+
+#dark .ChatMessages::-webkit-scrollbar-track {
+  background-color: var(--DarkPrimary);
 }
 
 .ChatInput {
   flex: 10vh;
   background-color: white;
+  padding: 0 20px;
+
+}
+
+#dark .ChatInput {
+  flex: 10vh;
+  background-color: #17443e;
   padding: 0 20px;
 
 }
@@ -436,12 +499,34 @@ form {
   color: var(--textColor);
 }
 
+#dark .typingInput input {
+  border-bottom: 1px solid #2B625B;
+  color: #fdfff5;
+  background: transparent;
+}
+
+#dark .typingInput input::placeholder {
+  color: #e1e1e1;
+}
+
 .send {
   display: flex;
   gap: 10px;
+  color: #777777;
+
 }
+
+#dark .send {
+  color: #fff;
+}
+
 
 .send button {
   background: transparent;
   border: none;
+  color: #777777;
+}
+
+#dark .send button {
+  color: #fff;
 }

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {createContext} from 'react';
 
-
 export const ThemeContext = createContext(null);
 
 export const ThemeContextProvider = ({children}) => {
@@ -12,12 +11,6 @@ export const ThemeContextProvider = ({children}) => {
     setTheme((curr) => (curr === 'light' ? 'dark' : 'light'));
     setThemeIcon(!themeIcon);
   };
-
-  // const value = {
-  //   theme,
-  //   themeIcon,
-  //   toggleTheme,
-  // };
 
   return (
     <ThemeContext.Provider value={{theme, themeIcon, toggleTheme}}>
