@@ -1,21 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import LoginImage from '../images/1.jpg';
 import {Link} from 'react-router-dom';
 import {Visibility, VisibilityOff} from '@mui/icons-material';
+import VisibilityContextProvider, {
+  VisibilityContext,
+} from '../context/VisibilityContextProvider';
 
 const Login = () => {
-  const [type, setType] = useState('password');
-  const [show, setShow] = useState(<VisibilityOff />);
+  const {type, changeInput, show} = useContext(VisibilityContext);
 
-  const changeInput = () => {
-    if (type === 'password') {
-      setType('text');
-      setShow(<Visibility />);
-    } else {
-      setType('password');
-      setShow(<VisibilityOff />);
-    }
-  };
   return (
     <div>
       <div className='login'>
@@ -36,7 +29,9 @@ const Login = () => {
               <input type='email' placeholder='Email' />
               <div className='pswdDiv'>
                 <input type={type} placeholder='Password' />
-                <div className='icon' onClick={changeInput}>{show}</div>
+                <div className='icon' onClick={changeInput}>
+                  {show ? <Visibility /> : <VisibilityOff />}
+                </div>
               </div>
               <button>Login in</button>
             </form>
@@ -52,4 +47,13 @@ const Login = () => {
   );
 };
 
-export default Login;
+function LonginWrapper() {
+  return (
+    <VisibilityContextProvider>
+    <Login />
+    </VisibilityContextProvider>
+  )
+}
+
+export default LonginWrapper;
+

@@ -1,21 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import LoginImage from '../images/1.jpg';
 import {Link} from 'react-router-dom';
 import {Visibility, VisibilityOff} from '@mui/icons-material';
+import VisibilityContextProvider, {
+  VisibilityContext,
+} from '../context/VisibilityContextProvider';
 
 const Register = () => {
-  const [type, setType] = useState('password');
-  const [show, setShow] = useState(<VisibilityOff />);
-
-  const changeInput = () => {
-    if (type === 'password') {
-      setType('text');
-      setShow(<Visibility />);
-    } else {
-      setType('password');
-      setShow(<VisibilityOff />);
-    }
-  };
+  const {type, changeInput, show} = useContext(VisibilityContext);
 
   return (
     <div>
@@ -44,7 +36,7 @@ const Register = () => {
               <div className='pswdDiv'>
                 <input type={type} placeholder='Password' />
                 <div className='icon' onClick={changeInput}>
-                  {show}
+                  {show ? <Visibility /> : <VisibilityOff />}
                 </div>
               </div>
 
@@ -62,4 +54,11 @@ const Register = () => {
   );
 };
 
-export default Register;
+function RegisterWrapper() {
+  return (
+    <VisibilityContextProvider>
+      <Register/>
+    </VisibilityContextProvider>
+  )
+}
+export default RegisterWrapper;
