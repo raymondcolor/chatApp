@@ -35,6 +35,7 @@ html::-webkit-scrollbar-track {
   --secondaryColor: #C4D293;
   --textColor: rgb(106, 106, 106);
   --font: 'Roboto', sans-serif;
+  --DarkPrimary:#182C25;
 }
 
 
@@ -107,15 +108,16 @@ form {
 }
 
 /*styles for div that contains the password input and  visibility icon */
-.pswdDiv{
+.pswdDiv {
   display: flex;
   position: relative;
   align-items: center;
 }
-.icon{
-position: absolute;
-right: 20px;
-color: rgb(124, 124, 124);
+
+.icon {
+  position: absolute;
+  right: 20px;
+  color: rgb(124, 124, 124);
 }
 
 .loginRight input:focus {
@@ -287,18 +289,50 @@ color: rgb(124, 124, 124);
   height: 100vh;
 }
 
-.ChatNav {
+#light .ChatNav {
   flex: 10vh;
   background-color: var(--secondaryColor);
   padding: 0 20px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
 }
 
-.ChatNav span {
+#dark .ChatNav {
+  flex: 10vh;
+  background-color: var(--DarkPrimary);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+#light .ChatNav span {
   font-weight: 700;
   color: rgb(91, 91, 91);
+}
+#dark .ChatNav span {
+  font-weight: 700;
+  color: #fff;
+}
+
+#light .navIcons button {
+  background: transparent;
+  border: none;
+  color: #2B625B;
+}
+
+#dark .navIcons button {
+  background: transparent;
+  border: none;
+  color: #fff;
 }
 
 /* styles for the visible part/container  for messaging */
@@ -306,6 +340,13 @@ color: rgb(124, 124, 124);
   flex: 80vh;
   padding: 20px 20px;
   background-color: #fdfff5;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+#dark .ChatMessages {
+  flex: 80vh;
+  padding: 20px 20px;
+  background-color: var(--DarkPrimary);
   overflow: scroll;
   overflow-x: hidden;
 }
@@ -335,6 +376,7 @@ color: rgb(124, 124, 124);
   padding: 0 20px;
 
 }
+
 /* styles to the messages recieved */
 
 .messageRecived p {
@@ -352,7 +394,7 @@ color: rgb(124, 124, 124);
 }
 
 /* ower class sets styles for the messages a sender sends */
-.owner .align{
+.owner .align {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
