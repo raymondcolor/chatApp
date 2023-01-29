@@ -4,12 +4,14 @@ import {createContext} from 'react';
 export const ThemeContext = createContext(null);
 
 export const ThemeContextProvider = ({children}) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const [themeIcon, setThemeIcon] = useState(true);
 
   const toggleTheme = () => {
-    setTheme((curr) => (curr === 'light' ? 'dark' : 'light'));
+    const newThem = theme === 'light' ? 'dark' : 'light';
+    setTheme(newThem);
     setThemeIcon(!themeIcon);
+    localStorage.setItem('theme', newThem);
   };
 
   return (
