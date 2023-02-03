@@ -1,5 +1,8 @@
 import React from 'react';
 import avator from '../images/1.jpg';
+import {Logout} from '@mui/icons-material';
+import {signOut} from 'firebase/auth';
+import {auth} from '../firebase';
 
 const DrawerNav = () => {
   return (
@@ -10,8 +13,13 @@ const DrawerNav = () => {
             Ray<span>Chat</span>
           </h1>
         </div>
-        <div className='profileNav'>
-          <img src={avator} alt='' />
+        <div className='drawerProfileContainer'>
+          <div className='profileNav'>
+            <img src={avator} alt='' />
+          </div>
+          <button onClick={signOut(auth)}>
+            <Logout />
+          </button>
         </div>
       </div>
     </div>

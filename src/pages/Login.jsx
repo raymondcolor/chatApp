@@ -1,14 +1,30 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import LoginImage from '../images/1.jpg';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 import VisibilityContextProvider, {
   VisibilityContext,
 } from '../context/VisibilityContextProvider';
 
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {auth} from '../firebase';
+
 const Login = () => {
   const {type, changeInput, show} = useContext(VisibilityContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/');
+    } catch {
+      // setError(true);
+    }
+  };
   return (
     <div>
       <div className='login'>
@@ -25,16 +41,24 @@ const Login = () => {
               <h2>Login</h2>
             </div>
 
-            <form action=''>
-              <input type='email' placeholder='Email' />
+            <div className='formContainer'>
+              <input
+                type='email'
+                placeholder='Email'
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <div className='pswdDiv'>
-                <input type={type} placeholder='Password' />
+                <input
+                  type={type}
+                  placeholder='Password'
+                  onChange={(e) => setPassword(e.target.value)}
+                />
                 <div className='icon' onClick={changeInput}>
                   {show ? <Visibility /> : <VisibilityOff />}
                 </div>
               </div>
-              <button>Login in</button>
-            </form>
+              <button onClick={handleSubmit}>Login in</button>
+            </div>
 
             <p>
               You dont have an account?{' '}
@@ -50,10 +74,9 @@ const Login = () => {
 function LonginWrapper() {
   return (
     <VisibilityContextProvider>
-    <Login />
+      <Login />
     </VisibilityContextProvider>
-  )
+  );
 }
 
 export default LonginWrapper;
-

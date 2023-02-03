@@ -1,18 +1,13 @@
 import React, {useContext, useState} from 'react';
 import LoginImage from '../images/1.jpg';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {Visibility, VisibilityOff} from '@mui/icons-material';
 import VisibilityContextProvider, {
   VisibilityContext,
 } from '../context/VisibilityContextProvider';
 import {auth, storage, db} from '../firebase';
 import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth';
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from 'firebase/storage';
+import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
 import {doc, setDoc} from 'firebase/firestore';
 
 const Register = () => {
@@ -22,34 +17,31 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [file, setFile] = useState('');
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res;
-    try {
-      res = await createUserWithEmailAndPassword(auth, email, password);
 
+    try {
+      const res = await createUserWithEmailAndPassword(auth, email, password);
       const storageRef = ref(storage, userName);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        (error) => {
-          setError(true);
-        },
-        async () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await updateProfile(res.user, {
-              userName,
-              photoURL: downloadURL,
-            });
-            await setDoc(doc(db, 'users', res.user.uid), {
-              uid: res.user.uid,
-              userName: userName,
-              email: email,
-              photoURL: downloadURL,git
-            });
+      uploadBytesResumable(storageRef, file).then((snapshot) => {
+        console.log(snapshot);
+        getDownloadURL(snapshot.ref).then(async (downloadURL) => {
+          await updateProfile(res.user, {
+            userName: userName,
+            photoURL: downloadURL,
           });
-        },
-      );
+          await setDoc(doc(db, 'users', res.user.uid), {
+            uid: res.user.uid,
+            userName: userName,
+            email: email,
+            photoURL: downloadURL,
+          });
+          await setDoc(doc(db, 'userChats', res.user.uid), {});
+          navigate('/');
+        });
+      });
     } catch {
       setError(true);
     }
