@@ -1,16 +1,19 @@
 import {initializeApp} from 'firebase/app';
-import GetAuth from 'firebase/auth';
+import {getAuth} from 'firebase/auth';
+import {getFirestore} from 'firebase/firestore';
+import {getStorage} from 'firebase/storage';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBqgcC5ThZzSIDgv30I97IHG-ySodz6ym8',
-  authDomain: 'raychat-eaab5.firebaseapp.com',
-  projectId: 'raychat-eaab5',
-  storageBucket: 'raychat-eaab5.appspot.com',
-  messagingSenderId: '879625881126',
-  appId: '1:879625881126:web:94c5f0ba073c28a95608e7',
+  apiKey: 'AIzaSyC_O2Q3EKQW4s5O8HlnhMQ2RNaaTjSVXtU',
+  authDomain: 'raychat-9b9d9.firebaseapp.com',
+  projectId: 'raychat-9b9d9',
+  storageBucket: 'raychat-9b9d9.appspot.com',
+  messagingSenderId: '21393264013',
+  appId: '1:21393264013:web:81408d01bd5ec7ab9f81c4',
+  measurementId: 'G-15FFDPTYML',
 };
 
-// Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-export const auth = GetAuth();
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+export const storage = getStorage(app);
+export const db = getFirestore(app);

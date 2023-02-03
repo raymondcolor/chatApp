@@ -89,7 +89,7 @@ html::-webkit-scrollbar-track {
   margin-top: 10px;
 }
 
-form {
+.formContainer{
   display: flex;
   flex-direction: column;
   gap: 15px;
