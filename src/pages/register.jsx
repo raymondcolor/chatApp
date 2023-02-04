@@ -12,29 +12,31 @@ import {doc, setDoc} from 'firebase/firestore';
 
 const Register = () => {
   const {type, changeInput, show} = useContext(VisibilityContext);
-  const [userName, setUserName] = useState('');
+  const [displayName, setdisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [file, setFile] = useState('');
   const [error, setError] = useState(false);
+  const [isLoading, setIsloading] = useState(true);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsloading(false);
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
-      const storageRef = ref(storage, userName);
+      const storageRef = ref(storage, displayName);
       uploadBytesResumable(storageRef, file).then((snapshot) => {
         console.log(snapshot);
         getDownloadURL(snapshot.ref).then(async (downloadURL) => {
           await updateProfile(res.user, {
-            userName: userName,
+            displayName: displayName,
             photoURL: downloadURL,
           });
           await setDoc(doc(db, 'users', res.user.uid), {
             uid: res.user.uid,
-            userName: userName,
+            displayName: displayName,
             email: email,
             photoURL: downloadURL,
           });
@@ -66,7 +68,7 @@ const Register = () => {
               <input
                 type='text'
                 placeholder='User name'
-                onChange={(e) => setUserName(e.target.value)}
+                onChange={(e) => setdisplayName(e.target.value)}
               />
 
               <input
@@ -93,8 +95,11 @@ const Register = () => {
                   {show ? <Visibility /> : <VisibilityOff />}
                 </div>
               </div>
-
-              <button onClick={handleSubmit}>Create account</button>
+              {isLoading ? (
+                <button onClick={handleSubmit}>Create account</button>
+              ) : (
+                <button>loading...</button>
+              )}
             </div>
             <p>
               Already have an account?

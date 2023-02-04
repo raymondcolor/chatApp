@@ -1,36 +1,23 @@
 import React, {useContext} from 'react';
 import Login from './pages/Login';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Register from './pages/register';
 import HomePage from './pages/HomePage';
+import PageNotFound from './pages/PageNotFound';
 import ThemeContextProvider, {
   ThemeContext,
 } from './context/ThemeContextProvider';
-import {AuthContext} from './context/AuthContext';
+// import {ProtectedRoutes} from './ProtectedRoutes';
 
 function App() {
   const {theme} = useContext(ThemeContext);
-  const {currentUser} = useContext(AuthContext);
-  console.log(currentUser);
-
-  // const ProtectedRoutes = () => {
-  //   if (!currentUser) {
-  //     return <Navigate to='/login' />;
-  //   } else {
-  //     return <Navigate to='/' />;
-  //   }
-  // };
 
   return (
     <div id={theme}>
       <Router>
         <Routes>
+        <Route path='*' element={<PageNotFound/>} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route
@@ -38,7 +25,7 @@ function App() {
             element={
               // <ProtectedRoutes>
                 <HomePage />
-              // </ProtectedRoutes>
+              // {/* </ProtectedRoutes> */}
             }
           />
         </Routes>

@@ -3,8 +3,14 @@ import avator from '../images/1.jpg';
 import {Logout} from '@mui/icons-material';
 import {signOut} from 'firebase/auth';
 import {auth} from '../firebase';
+import {useNavigate} from 'react-router-dom';
 
 const DrawerNav = () => {
+  const navigate = useNavigate();
+  const signout = () => {
+    signOut(auth);
+    navigate('/login');
+  };
   return (
     <div>
       <div className='drawerNav'>
@@ -17,7 +23,7 @@ const DrawerNav = () => {
           <div className='profileNav'>
             <img src={avator} alt='' />
           </div>
-          <button onClick={signOut(auth)}>
+          <button onClick={signout}>
             <Logout />
           </button>
         </div>

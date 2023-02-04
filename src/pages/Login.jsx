@@ -13,11 +13,12 @@ const Login = () => {
   const {type, changeInput, show} = useContext(VisibilityContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsloading] = useState(true);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setIsloading(false);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/');
@@ -57,7 +58,11 @@ const Login = () => {
                   {show ? <Visibility /> : <VisibilityOff />}
                 </div>
               </div>
-              <button onClick={handleSubmit}>Login in</button>
+              {isLoading ? (
+                <button onClick={handleSubmit}>Login in</button>
+              ) : (
+                <button disabled>loading....</button>
+              )}
             </div>
 
             <p>
