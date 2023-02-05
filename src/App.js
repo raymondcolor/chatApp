@@ -8,7 +8,7 @@ import PageNotFound from './pages/PageNotFound';
 import ThemeContextProvider, {
   ThemeContext,
 } from './context/ThemeContextProvider';
-// import {ProtectedRoutes} from './ProtectedRoutes';
+import {ProtectedRoutes} from './ProtectedRoutes';
 
 function App() {
   const {theme} = useContext(ThemeContext);
@@ -23,9 +23,9 @@ function App() {
           <Route
             path='/'
             element={
-              // <ProtectedRoutes>
+              <ProtectedRoutes>
                 <HomePage />
-              // {/* </ProtectedRoutes> */}
+              </ProtectedRoutes>
             }
           />
         </Routes>
